@@ -1,11 +1,11 @@
       ******************************************************************
-      * Author:
-      * Date:
-      * Purpose:
+      * Author:  Tom Gonzalez
+      * Date:  2017-09-01
+      * Purpose:  Two examples of the EVALUATE statement.
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       PROGRAM-ID. EVALUATE-GRADE.
        DATA DIVISION.
 
        WORKING-STORAGE SECTION.
@@ -15,8 +15,16 @@
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
+
             DISPLAY "Enter your numerical grade."
             ACCEPT GRADE
+
+      * EVALUTE TRUE will look at the boolean expressions with each
+      * WHEN clause until it finds one that is true.  The associated
+      * code block will be performed and then execution will go to the
+      * next statement after END-EVALUATE.  If none of the boolean
+      * expressions evaluate to true, the code block associated with
+      * WHEN OTHER (if there is a WHEN OTHER) is executed.
 
             EVALUATE TRUE
                WHEN GRADE >= 90
@@ -30,6 +38,14 @@
                WHEN OTHER
                    MOVE "F" TO LETTER-GRADE-1
             END-EVALUATE
+
+      * EVALUTE with a variable (in this case GRADE) will look at each
+      * WHEN clause until it finds a value that matches the value in
+      * the variable.  The associated code block will be performed and
+      * then execution will go to the next statement after END-EVALUATE.
+      * If none of the boolean expressions evaluate to true, the code
+      * block associated with WHEN OTHER (if there is a WHEN OTHER) is
+      * executed.
 
             EVALUATE GRADE
                WHEN 90 THRU 100
@@ -48,4 +64,5 @@
             DISPLAY "Your letter grade 2 is ", LETTER-GRADE-2, "."
 
             STOP RUN.
-       END PROGRAM YOUR-PROGRAM-NAME.
+
+       END PROGRAM EVALUATE-GRADE.

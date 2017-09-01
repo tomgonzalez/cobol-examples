@@ -1,25 +1,35 @@
       ******************************************************************
-      * Author:
-      * Date:
-      * Purpose:
+      * Author:  Tom Gonzalez
+      * Date: 09/18/2015
+      * Purpose: Simple IF Statement Example
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       PROGRAM-ID. SIMPLE-IF-EXAMPLES.
+
        DATA DIVISION.
-       FILE SECTION.
        WORKING-STORAGE SECTION.
+       01 NUM       PIC 9(3).
+
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
 
-            IF 3 > 5
-                DISPLAY "3 is greater than 5!"
+            DISPLAY "Enter a number."
+            ACCEPT NUM
+
+            IF NUM > 5
+                DISPLAY "The number is greater than 5."
             END-IF
 
-            IF 7 > 2
-                DISPLAY "7 is greater than 2!"
+            IF NUM < 3
+                DISPLAY "The number is less than 3."
             END-IF
 
-            DISPLAY 5 > 4
+            IF NUM = 8
+               DISPLAY "The number is equal to 8."
+            END-IF
+
+            DISPLAY "The program is ending now."
+
             STOP RUN.
-       END PROGRAM YOUR-PROGRAM-NAME.
+       END PROGRAM SIMPLE-IF-EXAMPLES.
