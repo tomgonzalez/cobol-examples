@@ -1,11 +1,12 @@
       ******************************************************************
       * Author:  Tom Gonzalez
       * Date:  2017-09-01
-      * Purpose: An example of nested IF statements.
+      * Purpose: An example of multiple IF statements with compound
+      *          boolean expressions.
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. NESTED-IFS-EXAMPLE.
+       PROGRAM-ID. MULTIPLE-IFS.
        DATA DIVISION.
 
        WORKING-STORAGE SECTION.
@@ -19,24 +20,26 @@
 
             IF GRADE >=  90
                 MOVE "A" TO LETTER-GRADE
-            ELSE
-                IF GRADE >= 80
-                    MOVE "B" TO LETTER-GRADE
-                ELSE
-                    IF GRADE >= 70
-                        MOVE "C" TO LETTER-GRADE
-                    ELSE
-                        IF GRADE >= 60
-                            MOVE "D" TO LETTER-GRADE
-                        ELSE
-                            MOVE "F" TO LETTER-GRADE
-                        END-IF
-                    END-IF
-                END-IF
+            END-IF
+
+            IF GRADE >= 80 AND GRADE < 90
+                MOVE "B" TO LETTER-GRADE
+            END-IF
+
+            IF GRADE >= 70 AND GRADE < 80
+                MOVE "C" TO LETTER-GRADE
+            END-IF
+
+            IF GRADE >= 60 AND GRADE < 70
+               MOVE "D" TO LETTER-GRADE
+            END-IF
+
+            IF GRADE < 60
+               MOVE "F" TO LETTER-GRADE
             END-IF
 
             DISPLAY "Your letter grade is ", LETTER-GRADE, "."
 
             STOP RUN.
 
-       END PROGRAM NESTED-IFS-EXAMPLE.
+       END PROGRAM MULTIPLE-IFS.
